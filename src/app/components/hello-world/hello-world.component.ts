@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 
-
 @Component({
   selector: 'hello-world',
   templateUrl: './hello-world.component.html',
@@ -18,6 +17,8 @@ export class HelloWorldComponent implements OnInit {
   }
 
   showHelloWorld() {
-    this.dataApi.getHelloWorld().subscribe(cadena=>console.log(cadena));
+    this.dataApi.getHelloWorld().subscribe((response:any)=> {
+      this.cadena = response;
+    })    
   }
 }
