@@ -21,6 +21,9 @@ import {HttpClientModule} from '@angular/common/http';
   providers: [
     DataApiService
   ],
+  exports:[
+    HelloWorldComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

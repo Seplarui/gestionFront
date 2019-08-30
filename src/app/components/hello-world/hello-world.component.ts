@@ -6,6 +6,7 @@ import { DataApiService } from '../../services/data-api.service';
   templateUrl: './hello-world.component.html',
   styleUrls: ['./hello-world.component.css']
 })
+
 export class HelloWorldComponent implements OnInit {
 
   constructor(private dataApi: DataApiService) { }

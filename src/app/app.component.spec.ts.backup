@@ -1,6 +1,8 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { HelloWorldComponent } from './components/hello-world/hello-world.component';
+import { DataApiService } from './services/data-api.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -9,18 +11,22 @@ describe('AppComponent', () => {
         RouterTestingModule
       ],
       declarations: [
-        AppComponent
+        AppComponent,
+        HelloWorldComponent
       ],
+      providers:[
+        DataApiService
+      ]
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  /*it('should create the app', () => {
+    const fixture = TestBed.createComponent(HelloWorldComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  });
+  });*/
 
-  it(`should have as title 'gestionFront'`, () => {
+  /*it(`should have as title 'gestionFront'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('gestionFront');
@@ -30,6 +36,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to gestionFront!');
-  });
+    expect(compiled.querySelector('p').textContent).toContain('Hola Mundo');
+  });*/
 });
