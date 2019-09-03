@@ -1,51 +1,42 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientModule} from '@angular/common/http'
-
 import { DataApiService } from './data-api.service';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { defer } from 'rxjs';
 
 
 describe('DataApiService', () => {
+  let dataApiService: DataApiService;
+  let httpClientSpyObj: jasmine.SpyObj<HttpClient>
 
-  let httpTestingController: HttpTestingController;
-  let service: DataApiService;
+  beforeEach(()  => {
+    const httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
 
-  beforeEach(() => TestBed.configureTestingModule({
-    declarations: [
-    ],
-    providers: [
-      DataApiService
-    ],
-    imports: [
-      HttpClientTestingModule,
-      HttpClientModule
-    ]
-    
-  }));
+    TestBed.configureTestingModule({
+      providers: [
+        DataApiService,
+        { provide: HttpClient, useValue: httpClientSpy }
+      ]
+    });
 
-
-  //httpTestingController = TestBed.get(httpTestingController);
-  //service = TestBed.get(DataApiService);
-  
-
-  it('should be created', () => {
-    let service: DataApiService = TestBed.get(DataApiService);
-    expect(service).toBeTruthy();
-    console.log("service: "+service.getHelloWorld);
+    dataApiService = TestBed.get(DataApiService);
+    httpClientSpyObj = TestBed.get(HttpClient);
   });
 
-  //PRUEBAS
 
+  it('should be created', () => {
+    expect(dataApiService).toBeTruthy();
+  });
 
-  it('getHelloWorld', () => {
-    //httpTestingController = TestBed.get(httpTestingController);
-    service = TestBed.get(DataApiService);
-    console.log("service: "+service.getHelloWorld);
-    service.getHelloWorld().subscribe(holaMundo => {
-      expect(holaMundo).toEqual('Hola Mundo');
-    })
-  })
+  it('getHelloWorld() should return hello world', () => {
+    httpClientSpyObj.get.and.returnValue(asyncData("hello"));
+    dataApiService.getHelloWorld().subscribe((res: string) => {
+      expect(res).toBe("hello");
+    });
+  });
 
+  function asyncData<T>(data: T) {
+    return defer(() => Promise.resolve(data));
+  }
 
 });
 

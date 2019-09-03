@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DataApiService } from '../../services/data-api.service';
 
 @Component({
@@ -7,19 +7,13 @@ import { DataApiService } from '../../services/data-api.service';
   styleUrls: ['./hello-world.component.css']
 })
 
-export class HelloWorldComponent implements OnInit {
+export class HelloWorldComponent {
+  cadena: string;
 
-  constructor(private dataApi: DataApiService) { }
-  private cadena: string;
-  
-
-  ngOnInit() {
-    this.showHelloWorld();
-  }
-
-  showHelloWorld() {
-    this.dataApi.getHelloWorld().subscribe((response:any)=> {
+  constructor(private dataApi: DataApiService) {
+    this.dataApi.getHelloWorld().subscribe((response: any) => {
       this.cadena = response;
-    })    
+    })
   }
+
 }
