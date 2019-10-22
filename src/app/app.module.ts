@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HelloWorldComponent } from './components/hello-world/hello-world.component';
 import { DataApiService } from './services/data-api.service';
 
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloWorldComponent
+    HelloWorldComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -21,8 +23,9 @@ import {HttpClientModule} from '@angular/common/http';
   providers: [
     DataApiService
   ],
-  exports:[
-    HelloWorldComponent
+  exports: [
+    HelloWorldComponent,
+    NavbarComponent
   ],
   bootstrap: [AppComponent]
 })
