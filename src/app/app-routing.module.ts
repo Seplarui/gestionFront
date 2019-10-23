@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'listEmpresas', component: ListEmpresasComponent },
   { path: 'saveEmpresa', component: SaveEmpresaComponent },
   { path: '**', component: Page404Component }
-
 ];
 
 @NgModule({
