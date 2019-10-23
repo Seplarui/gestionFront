@@ -8,12 +8,20 @@ import { DataApiService } from './services/data-api.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+import { ListEmpresasComponent } from './components/list-empresas/list-empresas.component';
+import { SaveEmpresaComponent } from './components/save-empresa/save-empresa.component';
+import { Page404Component } from './components/page404/page404.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HelloWorldComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomeComponent,
+    ListEmpresasComponent,
+    SaveEmpresaComponent,
+    Page404Component
   ],
   imports: [
     BrowserModule,
