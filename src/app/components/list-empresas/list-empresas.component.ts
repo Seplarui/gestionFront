@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataApiService } from 'src/app/services/data-api.service';
 
 @Component({
   selector: 'app-list-empresas',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListEmpresasComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataApi: DataApiService) { }
 
   ngOnInit() {
+    this.getListEmpresas();
+  }
+
+  getListEmpresas() {
+    this.dataApi.getListEmpresas().subscribe((empresas) => console.log(empresas));
   }
 
 }
