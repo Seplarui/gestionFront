@@ -1,4 +1,15 @@
 <div class="container">
   <h1>LISTA DE EMPRESAS</h1>
-  {{empresas | json }}
+<div class="row">
+  <div class="col-md-2">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">CIF</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let empresa of empresas">{{empresa.cif}}</tr>
+    </table>
+  </div>
 </div>
+  </div>
