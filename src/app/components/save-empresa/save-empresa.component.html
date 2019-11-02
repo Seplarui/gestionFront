@@ -1,10 +1,10 @@
 <h1>Salvar Empresa</h1>
 <section>
-    <form #formEmpresa="ngForm" (ngSubmit)="onSaveEmpresa(formEmpresa)">
+  <form #formEmpresa="ngForm" (ngSubmit)="onSaveEmpresa(formEmpresa)">
     <div class="form-group row">
       <label for="inputCIF" class="col-sm-1 col-form-label">CIF:</label>
       <div class="col-sm-4">
-        <input type="text" class="form-control" id="inputCIF" name="inputCIF" placeholder="CIF" required>
+        <input type="text" class="form-control" id="inputCIF" name="inputCIF" placeholder="CIF" required [(ngModel)]="this.dataApiService.selectedEmpresa.cif">
       </div>
     </div>
     <div class="form-group row">
@@ -14,3 +14,5 @@
     </div>
   </form>
 </section>
+
+

@@ -16,7 +16,12 @@ export class DataApiService {
 
   empresas: Observable<any>;
   empresa: Observable<any>;
-  headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+  // headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
+  headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+  public selectedEmpresa: EmpresaInterface = {
+    inputCIF: ''
+  };
 
   getHelloWorld() {
 
@@ -34,6 +39,7 @@ export class DataApiService {
 
   saveEmpresa(empresa: EmpresaInterface) {
     const urlApi = 'http://localhost:3000/api/empresa';
+    console.log('apiservice-->' + empresa.inputCIF);
     return this.http
       .post<EmpresaInterface>(urlApi, empresa, { headers: this.headers })
       .pipe(map(data => data));

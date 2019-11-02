@@ -17,8 +17,7 @@ export class SaveEmpresaComponent implements OnInit {
   }
 
   onSaveEmpresa(empresaForm: NgForm): void {
-    console.dir('KK' + empresaForm.value);
-    console.log('KK' + empresaForm.value);
+    console.log('INPUTCIF ' + empresaForm.value.inputCIF);
     this.dataApiService.saveEmpresa(empresaForm.value).subscribe(empresa => location.reload());
   }
 
